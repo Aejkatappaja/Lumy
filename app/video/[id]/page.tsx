@@ -33,7 +33,7 @@ export default function Videos() {
           <Text text='Il y a 3 jours' />
           <p>{apiData?.data[0]?.description}</p>
           <div className='flex space-x-6'>
-            <div className='flex- flex-col'>
+            <div className='flex flex-col'>
               <h1 className='text-2xl font-bold'>1.4k </h1>
               <Text text='Vues' />
             </div>
