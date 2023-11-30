@@ -1,13 +1,12 @@
 'use client';
 
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 
-interface ButtonProps {}
-
-export const Button: React.FC<ButtonProps> = ({ ...props }) => {
+export const Button: React.FC = () => {
   return (
     <button className='rounded-md border bg-transparent px-4 py-2'>
-      bbh.bzh
+      <ChevronRightIcon />
     </button>
   );
 };
