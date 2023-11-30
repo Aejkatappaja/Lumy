@@ -3,6 +3,7 @@ import { Logo } from './logo';
 import { TextLink } from './link';
 import { Links } from './links';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { Button } from './button';
 
 interface HeaderProps {}
 
@@ -17,10 +18,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
         })}
       </nav>
       <Logo />
-      <button className='flex space-x-4 rounded-md border bg-transparent px-4 py-4 text-center text-white'>
-        bbh.bzh
-        <ChevronRightIcon />
-      </button>
+      <Button />
     </div>
   );
 };
