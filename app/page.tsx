@@ -11,8 +11,6 @@ import { useRouter } from 'next/navigation';
 import { Card } from '@/components/video/Card';
 
 export default function Home() {
-  const router = useRouter();
-  const lastPublished = true;
   const response = useFetch();
   const { apiData } = response;
   console.log(response, 'data');

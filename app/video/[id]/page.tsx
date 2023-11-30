@@ -17,7 +17,7 @@ export default function Videos() {
   }
 
   return !isLoading ? (
-    <div className='flex h-full flex-col border px-24'>
+    <div className='mt-8 flex h-full flex-col px-24'>
       <div className='h-[681px] bg-white '></div>
       <div className='flex h-[457px] items-center justify-center'>
         <section className='flex w-[768px] flex-col gap-[34px] '>
