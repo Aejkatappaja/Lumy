@@ -19,6 +19,10 @@
   @apply w-[497px];
 }
 
+.oldGrey {
+  @apply text-[#7E7A7B];
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
