@@ -7,6 +7,6 @@ export default async function GetMostViewedVideos() {
   const data = await getVideosList({ view });
 
   return (
-    <Card variant='playlists' apiData={data} text={strings.mostViewed.all} />
+    <Card variant='mostViewed' apiData={data} text={strings.mostViewed.all} />
   );
 }

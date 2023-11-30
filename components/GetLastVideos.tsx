@@ -6,6 +6,6 @@ export default async function GetLastVideos() {
   const data = await getLastVideos();
 
   return (
-    <Card variant='playlists' apiData={data} text={strings.replays.last} />
+    <Card variant='lastVideos' apiData={data} text={strings.replays.last} />
   );
 }
