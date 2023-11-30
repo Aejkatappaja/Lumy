@@ -9,7 +9,11 @@ export const strings = {
     legals: 'Mentions Légales',
     website: 'Site Officiel',
   },
+  replays: {
+    last: 'Derniers Replays',
+  },
+  mostViewed: { all: 'Les plus Regardées' },
   playlists: {
-    all: 'Toutes les Playlists',
+    all: 'Toutes Nos Playlists',
   },
 };
