@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { useFetch } from '@/hooks/customs/useFetch';
 import { useRouter } from 'next/navigation';
+import { Card } from '@/components/video/Card';
 
 export default function Home() {
   const router = useRouter();
@@ -35,49 +36,9 @@ export default function Home() {
           );
         })}
       </Swiper>{' '}
+      <Card apiData={apiData} text='Derniers Replays' />
+      <Card apiData={apiData} text='retour sur les matchs' variant='match' />
       <div className='flex w-full flex-col space-y-4'>
-        <h1 className='border text-3xl font-bold'>DERNIERS REPLAYS</h1>
-        <Swiper
-          slidesPerView={2.5}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className='flex h-96 w-full border'
-        >
-          {apiData?.data?.map((item) => {
-            return (
-              <SwiperSlide key={item.title} className='h-96 w-1/2 border'>
-                <h1 key={item.title}> {item.title}</h1>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>{' '}
-      </div>{' '}
-      <div className='flex w-full flex-col space-y-4'>
-        <h1 className='border text-3xl font-bold'>RETOUR SUR LES MATCHS</h1>
-        <Swiper
-          slidesPerView={2.5}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className='flex h-96 w-full border'
-        >
-          {apiData?.data?.map((item) => {
-            return (
-              <SwiperSlide
-                key={item.title}
-                className='h-96 w-1/2 border'
-                onClick={() => router.push(`/video/${item.id}`)}
-              >
-                <h1 key={item.title}> {item.title}</h1>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>{' '}
         <div className='mt-5 h-[483px] w-[96%] rounded-2xl bg-[#001131] '>
           <div className=' relative flex h-[214px] flex-col '>
             <Image
