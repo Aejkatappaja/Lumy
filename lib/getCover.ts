@@ -14,6 +14,6 @@ export async function getCover(cover: string): Promise<ICover | undefined> {
     return response;
   } catch (error: unknown) {
     console.error(error);
-    throw new Error('failed to fetch Videos data');
+    throw new Error('failed to fetch cover data');
   }
 }
