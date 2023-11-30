@@ -9,4 +9,7 @@ export const strings = {
     legals: 'Mentions Légales',
     website: 'Site Officiel',
   },
+  playlists: {
+    all: 'Toutes les Playlists',
+  },
 };
