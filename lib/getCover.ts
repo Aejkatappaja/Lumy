@@ -7,7 +7,7 @@ export async function getCover(cover: string): Promise<ICover | undefined> {
       method: 'GET',
     });
 
-    const response: ICover = await res.json();
+    const response: ICover = await res.blob();
 
     console.log(response, 'response');
 

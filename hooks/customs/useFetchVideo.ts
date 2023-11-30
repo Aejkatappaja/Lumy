@@ -15,11 +15,11 @@ export const useFetchVideo = (id: string) => {
       const fetchVideos = async () => {
         const videos: ITotalVideos | undefined = await getVideosList(id);
         if (videos) {
-          setApiData(videos);
           const coverImage = await getCover(videos?.data[0]?.cover as string);
           console.log(videos?.data[0]?.cover.toString());
           setCover(coverImage);
           console.log(cover, 'cover');
+          setApiData(videos);
         }
       };
       fetchVideos();

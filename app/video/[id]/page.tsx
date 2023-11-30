@@ -1,14 +1,20 @@
 'use client';
 
 import { Text } from '@/components/video/Text';
+import { useCoverFetch } from '@/hooks/customs/useCoverFetch';
 import { useFetchVideo } from '@/hooks/customs/useFetchVideo';
 import { useParams } from 'next/navigation';
 
 export default function Videos() {
+  let cover;
   const params = useParams();
   const { id } = params;
   const video = useFetchVideo(id.toString());
   const { apiData, isLoading } = video;
+  if (video) {
+    cover = useCoverFetch(apiData?.data[0]?.cover as string);
+    console.log(cover?.apiData);
+  }
 
   return !isLoading ? (
     <div className='flex h-full flex-col border px-24'>
