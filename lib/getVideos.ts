@@ -19,20 +19,22 @@ export type IVideos = {
 
 export type ITotalVideos = { data: IVideos[] };
 export async function getVideosList(
-  limit?: number,
-  search?: string,
-  allData?: boolean
+  lastPublished?: boolean
 ): Promise<ITotalVideos | undefined> {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
   console.log(url, 'url----------');
 
   try {
-    const res = await fetch(`${url}/video`, {
-      next: { revalidate: 0 },
-      method: 'GET',
-    });
+    const res = await fetch(
+      !lastPublished ? `${url}/video` : `${url}/video?sort=date_published`,
+      {
+        next: { revalidate: 0 },
+        method: 'GET',
+      }
+    );
 
     const response: ITotalVideos = await res.json();
+
     console.log(response, 'response');
 
     return response;
