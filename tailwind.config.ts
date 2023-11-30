@@ -11,8 +11,12 @@ const config: Config = {
       backgroundImage: {
         triskell: "url('/images/triskell_bbh.svg')",
       },
+      fontFamily: {
+        Druk: ['DRUK', 'sans-serif'],
+      },
     },
   },
+
   plugins: [],
 };
 export default config;

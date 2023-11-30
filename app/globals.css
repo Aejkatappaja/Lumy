@@ -23,6 +23,11 @@
   @apply text-[#7E7A7B];
 }
 
+@font-face {
+  font-family: 'DRUK';
+  src: url('../public/fonts/DrukText-Bold.otf');
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
