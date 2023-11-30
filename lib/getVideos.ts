@@ -25,13 +25,10 @@ export async function getVideosList(
   console.log(url, 'url----------');
 
   try {
-    const res = await fetch(
-      !lastPublished ? `${url}/video` : `${url}/video?sort=date_published`,
-      {
-        next: { revalidate: 0 },
-        method: 'GET',
-      }
-    );
+    const res = await fetch(`${url}/items/video`, {
+      next: { revalidate: 0 },
+      method: 'GET',
+    });
 
     const response: ITotalVideos = await res.json();
 
