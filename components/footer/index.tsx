@@ -1,14 +1,12 @@
 import React from 'react';
 import { icons } from './icons';
-import Image from 'next/image';
 import Link from 'next/link';
 import { strings } from '@/utils/strings';
+import { Triskell } from './triskell';
 
-interface FooterProps {}
-
-export const CustomFooter: React.FC<FooterProps> = ({}) => {
+export const CustomFooter: React.FC = () => {
   return (
-    <footer className=' flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 border bg-[triskell] bg-no-repeat'>
+    <footer className='relative flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 overflow-hidden'>
       <nav className='flex gap-[56px]'>
         {icons.map((item) => {
           return (
@@ -25,6 +23,7 @@ export const CustomFooter: React.FC<FooterProps> = ({}) => {
         <Link href='#'>{strings.footer.legals}</Link>
         <Link href='#'>{strings.footer.website}</Link>
       </nav>
+      <Triskell />
     </footer>
   );
 };

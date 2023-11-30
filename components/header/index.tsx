@@ -8,7 +8,7 @@ interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
   return (
-    <div className='flex h-[86px] items-center justify-between border px-8'>
+    <div className='flex h-[86px] items-center justify-between px-8'>
       <nav className='space-x-6'>
         {Links.map((link) => {
           return (
