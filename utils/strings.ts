@@ -5,4 +5,8 @@ export const strings = {
     direct: 'Direct',
     button: 'bbh.bzh',
   },
+  footer: {
+    legals: 'Mentions Légales',
+    website: 'Site Officiel',
+  },
 };
