@@ -14,10 +14,7 @@ export const useFetch = (lastPublished?: IUseFetch) => {
     try {
       const fetchVideos = async () => {
         const videos: ITotalVideos | undefined = await getVideosList();
-        // if (videos && lastPublished) {
-        //   const copy = [...videos.data];
-        //   return copy.reverse().slice(0, 3);
-        // }
+
         setApiData(videos);
       };
       fetchVideos();
