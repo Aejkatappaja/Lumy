@@ -8,7 +8,7 @@ interface FooterProps {}
 
 export const CustomFooter: React.FC<FooterProps> = ({}) => {
   return (
-    <footer className='flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 border'>
+    <footer className=' flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 border'>
       <nav className='flex gap-[56px]'>
         {icons.map((item) => {
           return (
