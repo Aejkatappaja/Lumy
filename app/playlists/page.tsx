@@ -1,9 +1,15 @@
 import { strings } from '@/utils/strings';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export interface Iplaylist {
   id: string;
 }
+
+export const metadata: Metadata = {
+  title: 'BBH | Playlists',
+  description: 'BBH Videos Playlists',
+};
 
 export default function Playlist({ id }: Iplaylist) {
   if (!id) {

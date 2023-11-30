@@ -3,7 +3,13 @@
 import { Text } from '@/components/video/Text';
 import { useCoverFetch } from '@/hooks/customs/useCoverFetch';
 import { useFetchVideo } from '@/hooks/customs/useFetchVideo';
+import { Metadata } from 'next';
 import { useParams } from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: 'BBH | Videos',
+  description: 'BBH Videos Page',
+};
 
 export default function Videos() {
   let cover;
@@ -25,19 +31,7 @@ export default function Videos() {
             {apiData?.data[0]?.title}
           </h1>{' '}
           <Text text='Il y a 3 jours' />
-          <p>
-            {' '}
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius
-            necessitatibus incidusur. Corporis, exercitationem. Modi illo
-            voluptatum facilis molestiae deserunt non repellendus aspernatur?
-            Velit omnis amet eveniet nemo ad soluta maiores perspiciatis vitae,
-            obcaecati necessitatibus ipsa, ducimus aut odit repellendus aliquam
-            eum rem libero aliquid praesentium? Sunt illum est magnam placeat
-            commodi sapiente. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Assumenda numquam molestias rerum iste quo unde eum delectus
-            placeat dolore voluptates reprehenderit libero id neque voluptatum
-            labore laudantium, fuga laboriosam fugiat!
-          </p>
+          <p>{apiData?.data[0]?.description}</p>
           <div className='flex space-x-6'>
             <div className='flex- flex-col'>
               <h1 className='text-2xl font-bold'>1.4k </h1>
