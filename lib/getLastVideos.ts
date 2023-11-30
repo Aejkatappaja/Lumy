@@ -18,28 +18,14 @@ export type IVideos = {
 };
 
 export type ITotalVideos = { data: IVideos[] };
-export async function getVideosList({
-  id,
-  view,
-}: {
-  id?: string;
-  view?: boolean;
-}): Promise<ITotalVideos | undefined> {
+export async function getLastVideos(): Promise<ITotalVideos | undefined> {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
-  console.log(url, 'url----------');
 
   try {
-    const res = await fetch(
-      id
-        ? `https://api.brest.life/items/video?filter[id][_eq]=${id}`
-        : view
-          ? 'https://api.brest.life/items/video?sort=-view_count'
-          : `${url}/items/video`,
-      {
-        next: { revalidate: 0 },
-        method: 'GET',
-      }
-    );
+    const res = await fetch(`${url}/items/video?sort=-date_published`, {
+      next: { revalidate: 0 },
+      method: 'GET',
+    });
 
     const response: ITotalVideos = await res.json();
 
