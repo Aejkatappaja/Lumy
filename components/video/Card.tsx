@@ -20,6 +20,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
   let shadowWaves: boolean;
   let breadcrumbs: boolean;
   let pinkStuff: boolean;
+  let number;
   switch (props.variant) {
     case 'match':
       breadcrumbs = true;
@@ -41,9 +42,16 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
       shadowWaves = false;
       pinkStuff = true;
       break;
+    case 'threeLastvideos':
+      breadcrumbs = false;
+      shadowWaves = false;
+      pinkStuff = false;
+      number = 3;
+      break;
     default:
       breadcrumbs = false;
       shadowWaves = false;
+      number = 5;
       break;
   }
 
@@ -54,7 +62,11 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
         <h1 className='font-Druk text-4xl tracking-wide'>
           {props.text.toUpperCase()}
         </h1>
-        <button className='rounded-xl bg-[#404040] px-4 py-2'>Voir tout</button>
+        {props.variant !== 'threeLastVideos' && (
+          <button className='rounded-xl bg-[#404040] px-4 py-2'>
+            Voir tout
+          </button>
+        )}
       </div>
       {breadcrumbs && (
         <div className='flex'>
@@ -64,7 +76,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
         </div>
       )}
       <div className='flex h-96 gap-8 overflow-x-scroll'>
-        {props.apiData?.data?.slice(0, 5).map((item) => {
+        {props.apiData?.data?.slice(0, number).map((item) => {
           const id = item.youtube_id.toString();
           const url = `https://www.youtube.com/watch?v=${id}`;
           return (
@@ -74,12 +86,16 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                 className={
                   pinkStuff
                     ? 'flex h-[80%] w-[24rem] flex-col justify-between '
-                    : 'flex h-[80%] w-[34rem] '
+                    : props.variant === 'lastReplays'
+                      ? 'flex h-[60%] w-[20rem] '
+                      : props.variant === 'threeLastVideos'
+                        ? 'flex h-[80%] w-[34rem] '
+                        : 'flex h-[80%] w-[34rem] '
                 }
               >
                 {' '}
                 {pinkStuff && (
-                  <div className='text z-10 flex h-24 w-full items-start justify-start  bg-gradient-to-b from-black from-15% via-[#9e2170] via-70% to-black to-25% pl-2 font-Druk text-5xl tracking-wider text-[#ff11aa]'>
+                  <div className=' myclass text-blackt z-10 flex h-24 w-full items-start  justify-start bg-gradient-to-b from-black from-15% via-[#9e2170] via-70% to-black to-25% pl-2 font-Druk text-5xl tracking-widest text-black text-opacity-80'>
                     {item.view_count} vu
                   </div>
                 )}
