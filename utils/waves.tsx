@@ -8,7 +8,7 @@ export const Waves = () => {
       xmlns='http://www.w3.org/2000/svg'
       className='absolute bottom-0 -z-10 fill-slate-50/10'
     >
-      <g clip-path='url(#clip0_301_5767)'>
+      <g clipPath='url(#clip0_301_5767)'>
         <path
           fillRule='evenodd'
           clipRule='evenodd'
