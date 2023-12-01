@@ -12,19 +12,16 @@ export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center  gap-14 pl-12 pt-20'>
       <BlurBackground />
-      <Suspense fallback={<Spinner />}>
-        <GetThreeLastVideos />
-      </Suspense>{' '}
-      <Suspense fallback={<Spinner />}>
-        <GetLastVideos />
-      </Suspense>
+
+      <GetThreeLastVideos />
+
+      <GetLastVideos />
+
       <HeroEHF />
-      <Suspense fallback={<Spinner />}>
-        <GetMostViewedVideos />
-      </Suspense>
-      <Suspense fallback={<Spinner />}>
-        <GetPlaylists />
-      </Suspense>
+
+      <GetMostViewedVideos />
+
+      <GetPlaylists />
     </main>
   );
 }
