@@ -112,7 +112,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
               >
                 {' '}
                 {pinkStuff && (
-                  <div className=' myclass text-blackt z-10 flex h-24 w-full items-start  justify-start bg-gradient-to-b from-black from-15% via-[#9e2170] via-70% to-black to-25% pl-2 font-Druk text-5xl tracking-widest text-black text-opacity-80'>
+                  <div className=' myclass text-blackt z-10 flex h-24 w-full items-start justify-start border  border-black bg-gradient-to-b from-black from-15% via-[#9e2170] via-70% to-black to-25% pl-2 font-Druk text-5xl tracking-widest text-black text-opacity-90'>
                     {formatNumber(item.view_count)}K
                   </div>
                 )}
