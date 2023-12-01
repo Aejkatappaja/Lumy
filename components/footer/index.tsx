@@ -2,7 +2,6 @@ import React from 'react';
 import { icons } from './icons';
 import Link from 'next/link';
 import { strings } from '@/utils/strings';
-import { Triskell } from '@/utils/triskell';
 
 export const CustomFooter: React.FC = () => {
   return (
@@ -11,6 +10,7 @@ export const CustomFooter: React.FC = () => {
         {icons.map((item) => {
           return (
             <Link
+              key={item.href}
               href={item.href}
               target='_blank'
               className='duration-700  hover:scale-150'
