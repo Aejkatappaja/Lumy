@@ -8,7 +8,8 @@ import { IPlaylists } from '@/lib/getPlaylists';
 import React from 'react';
 import Image from 'next/image';
 import { Waves } from '@/utils/waves';
-import { formatNumber } from '@/utils/formatNumber';
+import { formatNumber } from '@/utils/format-number';
+import { timeSincePublishedVideo } from '@/utils/time-difference';
 
 interface CardProps {
   apiData: ITotalVideos | IPlaylists | undefined;
@@ -89,9 +90,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                     ? 'flex h-[80%] w-[24rem] flex-col justify-between '
                     : props.variant === 'lastReplays'
                       ? 'flex h-[60%] w-[20rem] '
-                      : props.variant === 'threeLastVideos'
-                        ? 'flex h-[80%] w-[34rem] '
-                        : 'flex h-[80%] w-[34rem] '
+                      : 'flex h-[80%] w-[34rem] '
                 }
               >
                 {' '}
@@ -102,7 +101,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                 )}
                 {props.variant !== 'playlists' ? (
                   item?.youtube_id && (
-                    <div className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 opacity-50 duration-1000  hover:opacity-100 hover:shadow-md hover:shadow-white/20'>
+                    <div className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:translate-x-2 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400'>
                       <ReactPlayer
                         url={url}
                         style={{ position: 'absolute', top: 20, left: 0 }}
@@ -122,7 +121,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                     </div>
                   )
                 ) : (
-                  <div className='no-scrollbar relative flex h-full w-full items-center justify-center rounded-2xl border-2 border-white/20 bg-white/20 opacity-50 duration-1000 hover:opacity-100 hover:shadow-md hover:shadow-white/20'>
+                  <div className='no-scrollbar relative flex h-full w-full items-center justify-center rounded-2xl border-2 border-white/20 bg-white/20  duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400'>
                     <Image
                       src='/images/playlist-alt.jpeg'
                       fill
@@ -132,7 +131,12 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                   </div>
                 )}
               </div>{' '}
-              <h1 className='pl-2 font-bold'>{item.title}</h1>
+              <h1 className='pl-2 font-bold'>{item.title}</h1>{' '}
+              {item.date_published && (
+                <h1 className='oldGrey pl-2 text-sm tracking-wide'>
+                  Il y a {timeSincePublishedVideo(item.date_published)} jours
+                </h1>
+              )}
               {props.variant === 'playlists' &&
               'video' in item &&
               Array.isArray(item.video) ? (
