@@ -15,5 +15,6 @@ export const strings = {
   mostViewed: { all: 'Les plus Regardées' },
   playlists: {
     all: 'Toutes Nos Playlists',
+    page: 'Toutes les Playlists',
   },
 };
