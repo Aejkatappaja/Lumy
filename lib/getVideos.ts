@@ -26,7 +26,6 @@ export async function getVideosList({
   view?: boolean;
 }): Promise<ITotalVideos | undefined> {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
-  console.log(url, 'url----------');
 
   try {
     const res = await fetch(
