@@ -5,7 +5,6 @@ import { marked } from 'marked';
 
 export default async function GetVideoById({ id }: { id: string }) {
   const data = await getVideosList({ id });
-  console.log(data, 'data');
   const ytId = data?.data[0]?.youtube_id.toString();
 
   return (
@@ -27,10 +26,10 @@ export default async function GetVideoById({ id }: { id: string }) {
           )}
         </div>
       </div>
-      <div className='mt-12 flex h-[457px] items-center justify-center'>
+      <div className='flex h-[457px] items-center justify-center'>
         <section className='flex w-[768px] flex-col gap-[34px] '>
           <h1 className='truncate text-5xl font-bold'>
-            {data?.data[0]?.title}
+            {data?.data[0]?.title.toUpperCase()}
           </h1>{' '}
           <Text text='Il y a 3 jours' />
           <p
