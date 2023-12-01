@@ -2,14 +2,13 @@ import React from 'react';
 import { Logo } from './logo';
 import { TextLink } from './link';
 import { Links } from './links';
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
   return (
-    <div className='flex h-[86px] items-center justify-between px-8'>
+    <div className='flex h-[86px] items-center justify-between px-14'>
       <nav className='space-x-6'>
         {Links.map((link) => {
           return (
