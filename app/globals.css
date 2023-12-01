@@ -30,17 +30,23 @@
 
 @layer utilities {
   @variants responsive {
-    /* Hide scrollbar for Chrome, Safari, and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
 
-    /* Hide scrollbar for IE, Edge, and Firefox */
     .no-scrollbar {
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
   }
+}
+
+.myclass {
+  text-shadow:
+    2px 2px 0 #ff11aa,
+    -1px -1px 0 #ff11aa,
+    1px -1px 0 #ff11aa,
+    -1px 1px #ff11aa;
 }
 
 body {
