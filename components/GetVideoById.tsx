@@ -9,7 +9,7 @@ export default async function GetVideoById({ id }: { id: string }) {
   const ytId = data?.data[0]?.youtube_id.toString();
 
   return (
-    <div className='mt-8 flex h-full flex-col px-24'>
+    <div className='mt-32  flex h-full flex-col px-24'>
       <div className='h-[681px]'>
         {' '}
         <div className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '>
