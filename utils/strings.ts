@@ -16,5 +16,7 @@ export const strings = {
   playlists: {
     all: 'Toutes Nos Playlists',
     page: 'Toutes les Playlists',
+    waitingForHover:
+      'Veuillez passer votre souris sur une playlist afin de visualiser les informations',
   },
 };
