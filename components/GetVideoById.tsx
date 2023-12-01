@@ -5,7 +5,6 @@ import { marked } from 'marked';
 
 export default async function GetVideoById({ id }: { id: string }) {
   const data = await getVideosList({ id });
-  console.log(data, 'data');
   const ytId = data?.data[0]?.youtube_id.toString();
   const src = `https://www.youtube.com/watch?v=${ytId}`;
   return (

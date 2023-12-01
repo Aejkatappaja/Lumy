@@ -41,8 +41,6 @@ export async function getVideosList({
 
     const response: ITotalVideos = await res.json();
 
-    console.log(response, 'response');
-
     return response;
   } catch (error: unknown) {
     console.error(error);

@@ -28,8 +28,6 @@ export async function getLastVideos(): Promise<ITotalVideos | undefined> {
 
     const response: ITotalVideos = await res.json();
 
-    console.log(response, 'response');
-
     return response;
   } catch (error: unknown) {
     console.error(error);

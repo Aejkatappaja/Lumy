@@ -8,8 +8,6 @@ export async function getCover(cover: string): Promise<ICover | undefined> {
 
     const response: ICover = await res.blob();
 
-    console.log(response, 'response');
-
     return response;
   } catch (error: unknown) {
     console.error(error);
