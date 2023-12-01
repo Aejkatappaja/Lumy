@@ -7,11 +7,12 @@ import { Links } from './links';
 import { Button } from './button';
 
 export const Header: React.FC = () => {
-  const [scrollPosition, setScrollPosition] = React.useState(0);
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -20,18 +21,11 @@ export const Header: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const calculateOpacity = () => {
-    const maxScroll =
-      document.documentElement.scrollHeight - window.innerHeight;
-    const opacity = Math.min(scrollPosition / maxScroll, 1);
-    return opacity;
-  };
-
   return (
     <div
-      className='fixed left-0 right-0 top-0 z-50 transition-opacity duration-300 ease-in-out'
-      style={{ backgroundColor: `rgba(0, 0, 0, ${calculateOpacity()})` }}
+      className={`fixed left-0 right-0 top-0 z-50 ${
+        isScrolled ? 'bg-black' : 'bg-transparent'
+      } transition-colors duration-[3000ms] ease-in-out`}
     >
       <div className='flex h-[86px] items-center justify-between px-14'>
         <nav className='space-x-6'>
