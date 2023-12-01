@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Waves } from '@/utils/waves';
 import { formatNumber } from '@/utils/format-number';
 import { timeSincePublishedVideo } from '@/utils/time-difference';
+import Link from 'next/link';
 
 interface CardProps {
   apiData: ITotalVideos | IPlaylists | undefined;
@@ -57,6 +58,18 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
       break;
   }
 
+  const [hoverStates, setHoverStates] = React.useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const handleMouseEnter = (id: string) => {
+    setHoverStates((prevStates) => ({ ...prevStates, [id]: true }));
+  };
+
+  const handleMouseLeave = (id: string) => {
+    setHoverStates((prevStates) => ({ ...prevStates, [id]: false }));
+  };
+
   return (
     <div className='z-10 flex w-full flex-col space-y-6'>
       {shadowWaves && <Waves />}
@@ -82,7 +95,11 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
           const id = item.youtube_id.toString();
           const url = `https://www.youtube.com/watch?v=${id}`;
           return (
-            <div className='relative flex flex-col justify-between' key={id}>
+            <Link
+              className='relative flex flex-col justify-between'
+              key={id}
+              href={`/video/${item.id}`}
+            >
               {' '}
               <div
                 className={
@@ -101,12 +118,18 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                 )}
                 {props.variant !== 'playlists' ? (
                   item?.youtube_id && (
-                    <div className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:translate-x-2 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400'>
+                    <div
+                      className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:translate-x-2 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '
+                      onMouseEnter={() => handleMouseEnter(id)}
+                      onMouseLeave={() => handleMouseLeave(id)}
+                    >
                       <ReactPlayer
                         url={url}
                         style={{ position: 'absolute', top: 20, left: 0 }}
                         width='100%'
                         height='85%'
+                        playing={hoverStates[id]}
+                        volume={0}
                         config={{
                           file: {
                             attributes: {
@@ -146,7 +169,7 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
               ) : (
                 <h2></h2>
               )}
-            </div>
+            </Link>
           );
         })}{' '}
       </div>{' '}
