@@ -5,8 +5,9 @@ import { marked } from 'marked';
 
 export default async function GetVideoById({ id }: { id: string }) {
   const data = await getVideosList({ id });
+  console.log(data, 'data');
   const ytId = data?.data[0]?.youtube_id.toString();
-  const src = `https://www.youtube.com/watch?v=${ytId}`;
+
   return (
     <div className='mt-8 flex h-full flex-col px-24'>
       <div className='h-[681px]'>
@@ -16,7 +17,7 @@ export default async function GetVideoById({ id }: { id: string }) {
             <iframe
               width='100%'
               height='100%'
-              src={src}
+              src={`https://www.youtube.com/embed/${ytId}`}
               title='YouTube video player'
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
