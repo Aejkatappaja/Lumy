@@ -24,7 +24,7 @@ export async function getPlayList(
 
   try {
     const res = await fetch(
-      `${url}/items/playlist`,
+      !id ? `${url}/items/playlist` : `${url}/items/playlist?filter[id]=${id}`,
 
       {
         method: 'GET',
