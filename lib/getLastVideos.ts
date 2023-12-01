@@ -23,7 +23,6 @@ export async function getLastVideos(): Promise<ITotalVideos | undefined> {
 
   try {
     const res = await fetch(`${url}/items/video?sort=-date_published`, {
-      next: { revalidate: 0 },
       method: 'GET',
     });
 

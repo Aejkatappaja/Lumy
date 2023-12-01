@@ -36,7 +36,6 @@ export async function getVideosList({
           ? 'https://api.brest.life/items/video?sort=-view_count'
           : `${url}/items/video`,
       {
-        next: { revalidate: 0 },
         method: 'GET',
       }
     );

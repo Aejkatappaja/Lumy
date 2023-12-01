@@ -27,7 +27,6 @@ export async function getPlayList(
       `${url}/items/playlist`,
 
       {
-        next: { revalidate: 0 },
         method: 'GET',
       }
     );
