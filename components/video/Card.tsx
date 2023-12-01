@@ -56,11 +56,11 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
           </span>{' '}
         </div>
       )}
-      <div className='flex h-96 gap-4 overflow-scroll border'>
+      <div className='flex h-96 gap-20 overflow-x-scroll'>
         {props.apiData?.data?.slice(0, 5).map((item) => {
           return (
-            <div>
-              <div className='flex h-[80%] w-[20rem] border'>
+            <div className='flex flex-col justify-between border'>
+              <div className='flex h-[60%] w-[30rem] border'>
                 {item?.youtube_id && (
                   <YouTube
                     videoId={item.youtube_id.toString()}
