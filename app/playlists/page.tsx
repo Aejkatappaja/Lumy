@@ -11,7 +11,7 @@ export default async function Playlist() {
   const data = await getPlayList();
 
   return (
-    <div className='mx-auto mt-8 flex w-[80%] items-center  border shadow-2xl shadow-black'>
+    <div className='mx-auto mt-8 flex w-[80%] items-center shadow-2xl shadow-black'>
       <div className=' no-scrollbar h-[535px] space-y-8 overflow-y-scroll font-Druk'>
         <h1 className='pb-4 text-2xl'>
           {strings.playlists.page.toUpperCase()}
@@ -24,7 +24,7 @@ export default async function Playlist() {
           );
         })}
       </div>
-      <div className='playlist-section border'></div>
+      <div className='playlist-section'></div>
     </div>
   );
 }
