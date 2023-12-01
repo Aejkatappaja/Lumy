@@ -8,7 +8,10 @@ interface TextLinkProps {
 
 export const TextLink: React.FC<TextLinkProps> = ({ ...props }) => {
   return (
-    <Link href={props.href} className='font-bold '>
+    <Link
+      href={props.href}
+      className='font-bold duration-700 hover:text-pink-400'
+    >
       {props.title}
     </Link>
   );
