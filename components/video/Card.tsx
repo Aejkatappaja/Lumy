@@ -2,15 +2,14 @@
 
 import ReactPlayer from 'react-player/lazy';
 
-import { ITotalVideos } from '@/lib/getVideos';
-
-import { IPlaylists } from '@/lib/getPlaylists';
 import React from 'react';
 import Image from 'next/image';
 import { Waves } from '@/utils/waves';
 import { formatNumber } from '@/utils/format-number';
 import { timeSincePublishedVideo } from '@/utils/time-difference';
 import Link from 'next/link';
+import usePlaylistCover from '@/hooks/usePlaylistCover';
+import { IPlaylists, ITotalVideos } from '@/types';
 
 interface CardProps {
   apiData: ITotalVideos | IPlaylists | undefined;
@@ -92,13 +91,18 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
       )}
       <div className='flex h-96 gap-8 overflow-x-scroll'>
         {props.apiData?.data?.slice(0, number).map((item) => {
+          const coverUrl = usePlaylistCover(item.cover);
           const id = item.youtube_id.toString();
           const url = `https://www.youtube.com/watch?v=${id}`;
           return (
             <Link
               className='relative flex flex-col justify-between'
               key={id}
-              href={`/video/${item.id}`}
+              href={
+                props.variant !== 'playlists'
+                  ? `/video/${item.id}`
+                  : `/playlists`
+              }
             >
               {' '}
               <div
@@ -116,14 +120,15 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                     {formatNumber(item.view_count)}K
                   </div>
                 )}
-                {props.variant !== 'playlists' ? (
+                {
+                  /* {props.variant !== 'playlists' ? ( */
                   item?.youtube_id && (
                     <div
                       className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:translate-x-2 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '
                       onMouseEnter={() => handleMouseEnter(id)}
                       onMouseLeave={() => handleMouseLeave(id)}
                     >
-                      <ReactPlayer
+                      {/* <ReactPlayer
                         url={url}
                         style={{ position: 'absolute', top: 20, left: 0 }}
                         width='100%'
@@ -140,19 +145,17 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
                             },
                           },
                         }}
-                      />
+                      /> */}
+                      <Image
+                        src={coverUrl}
+                        fill
+                        alt='image'
+                        className='rounded-2xl'
+                        loading='lazy'
+                      ></Image>
                     </div>
                   )
-                ) : (
-                  <div className='no-scrollbar relative flex h-full w-full items-center justify-center rounded-2xl border-2 border-white/20 bg-white/20  duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400'>
-                    <Image
-                      src='/images/playlist-alt.jpeg'
-                      fill
-                      alt='playlist_cover'
-                      className='object-cover py-6'
-                    />
-                  </div>
-                )}
+                }
               </div>{' '}
               <h1 className='pl-2 font-bold'>{item.title}</h1>{' '}
               {item.date_published && (
