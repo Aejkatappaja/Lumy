@@ -8,14 +8,15 @@ export const CustomFooter: React.FC = () => {
     <footer className='relative flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 overflow-hidden'>
       <nav className='flex gap-[56px]'>
         {icons.map((item) => {
+          const { href, icon } = item;
           return (
             <Link
-              key={item.href}
-              href={item.href}
+              key={href}
+              href={href}
               target='_blank'
-              className='duration-700  hover:scale-150'
+              className='duration-700 hover:scale-150'
             >
-              <img src={item.icon} alt='' />
+              <img src={icon} alt='' />
             </Link>
           );
         })}
