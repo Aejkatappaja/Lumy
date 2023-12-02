@@ -1,31 +1,42 @@
+'use client';
+
 import { getVideosList } from '@/lib/getVideos';
 import { Text } from '@/components/video/Text';
 import { formatNumber } from '@/utils/format-number';
 import { marked } from 'marked';
 import { Card } from './video/Card';
 import { getLastVideos } from '@/lib/getLastVideos';
+import YouTube from 'react-youtube';
 
 export default async function GetVideoById({ id }: { id: string }) {
   const data = await getVideosList({ id });
   const moreVideos = await getLastVideos();
   const ytId = data?.data[0]?.youtube_id.toString();
 
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+
   return (
     <div className='mt-32 flex h-full flex-col '>
       <div className='h-[681px] px-20'>
         {' '}
-        <div className='no-scrollbar relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '>
+        <div className='no-scrollbar relative flex h-full w-full items-center justify-center rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '>
           {data?.data[0]?.youtube_id && (
             <iframe
               width='100%'
               height='100%'
               src={`https://www.youtube.com/embed/${ytId}`}
-              title='YouTube video player'
-              frameBorder='0'
+              title='YouTube BBH Player'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
               allowFullScreen
               style={{ borderRadius: '20px' }}
             ></iframe>
+            // <YouTube videoId={ytId} opts={opts} />
           )}
         </div>
       </div>
