@@ -9,8 +9,10 @@ const usePlaylistCover = (playlistId: string | undefined) => {
       try {
         if (playlistId) {
           const blobData = await getCover(playlistId);
-          const imageUrl = URL.createObjectURL(blobData);
-          setCoverUrl(imageUrl);
+          if (blobData) {
+            const imageUrl = URL.createObjectURL(blobData);
+            setCoverUrl(imageUrl);
+          }
         }
       } catch (error) {
         console.error(error);
