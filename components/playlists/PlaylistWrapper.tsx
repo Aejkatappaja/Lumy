@@ -28,13 +28,14 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
           {strings.playlists.page.toUpperCase()}
         </h1>
         {data?.data?.map((item) => {
+          const { id, title } = item;
           return (
             <h2
               className=' oldGrey z-20 cursor-pointer text-4xl tracking-wide duration-700 hover:scale-75 hover:text-white'
-              key={item.id}
+              key={id}
               onMouseEnter={() => setSelectedPlaylist(item.id)}
             >
-              {item.title.toUpperCase()}
+              {title.toUpperCase()}
             </h2>
           );
         })}
