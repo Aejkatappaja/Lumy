@@ -5,42 +5,21 @@ import { Logo } from './logo';
 import { TextLink } from './link';
 import { Links } from './links';
 import { Button } from './button';
+import useScrollOpacity from '@/hooks/useScrollOpacity';
 
 export const Header: React.FC = () => {
-  const [scrollPosition, setScrollPosition] = React.useState(0);
+  const opacity = useScrollOpacity();
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const calculateOpacity = () => {
-    if (typeof window !== 'undefined') {
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const opacity = Math.min(scrollPosition / maxScroll, 1);
-      return opacity;
-    }
-    return 0;
-  };
   return (
     <div
       className='fixed left-0 right-0 top-0 z-50 transition-opacity duration-300 ease-in-out'
-      style={{ backgroundColor: `rgba(0, 0, 0, ${calculateOpacity()})` }}
+      style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
     >
       <div className='flex h-[86px] items-center justify-between px-14'>
         <nav className='space-x-6'>
           {Links.map((link) => {
-            return (
-              <TextLink key={link.title} href={link.href} title={link.title} />
-            );
+            const { href, title } = link;
+            return <TextLink key={title} href={href} title={title} />;
           })}
         </nav>
         <Logo />
