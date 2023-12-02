@@ -1,12 +1,11 @@
 import { getPlayList } from '@/lib/getPlaylists';
-import { PlaylistWrapper } from './playlist/PlaylistWrapper';
+import { PlaylistWrapper } from './playlists/PlaylistWrapper';
 
 export default async function DisplayPlaylists() {
   const data = await getPlayList();
   if (!data) {
     throw new Error();
   }
-  console.log(data);
 
   return <PlaylistWrapper data={data} />;
 }

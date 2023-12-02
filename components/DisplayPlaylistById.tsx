@@ -1,5 +1,5 @@
 import { getPlayList } from '@/lib/getPlaylists';
-import { PlaylistByIdWrapper } from './playlist/PlaylistByIdWrapper';
+import { PlaylistByIdWrapper } from './playlists/PlaylistByIdWrapper';
 
 export default async function DisplayPlaylists({ id }: { id: string }) {
   const data = await getPlayList(id);
