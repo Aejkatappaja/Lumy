@@ -1,22 +1,5 @@
-interface IVideo {
-  video: number[];
-}
+import { IPlaylists } from '@/types';
 
-export type IPlaylist = {
-  id: number;
-  sort: null;
-  youtube_id: string;
-  title: string;
-  description: string;
-  cover: string;
-  duration: number;
-  view_count: number;
-  like_count: number;
-  date_published: string;
-  video: IVideo;
-};
-
-export type IPlaylists = { data: IPlaylist[] };
 export async function getPlayList(
   id?: string
 ): Promise<IPlaylists | undefined> {

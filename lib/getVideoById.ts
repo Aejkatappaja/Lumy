@@ -1,22 +1,5 @@
-interface IPlaylist {
-  playlist: number[];
-}
+import { ITotalVideos } from '@/types';
 
-export type IVideos = {
-  id: string;
-  status: string;
-  sort: null;
-  youtube_id: string;
-  title: string;
-  description: string;
-  cover: string;
-  duration: number;
-  view_count: number;
-  like_count: number;
-  date_published: string;
-  playlist: IPlaylist;
-};
-export type ITotalVideos = { data: IVideos[] };
 export async function getVideosById({
   id,
 }: {
@@ -25,12 +8,9 @@ export async function getVideosById({
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   try {
-    const res = await fetch(
-      `https://api.brest.life/items/video?filter[id]=${id}`,
-      {
-        method: 'GET',
-      }
-    );
+    const res = await fetch(`${url}/items/video?filter[id]=${id}`, {
+      method: 'GET',
+    });
 
     const response: ITotalVideos = await res.json();
 

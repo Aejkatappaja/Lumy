@@ -1,8 +1,10 @@
-export type ICover = any;
+export type ICover = Blob;
 
 export async function getCover(cover: string): Promise<ICover | undefined> {
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
   try {
-    const res = await fetch(`https://api.brest.life/assets/${cover}`, {
+    const res = await fetch(`${url}/assets/${cover}`, {
       method: 'GET',
     });
 
