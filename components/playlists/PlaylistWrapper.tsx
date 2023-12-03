@@ -22,6 +22,7 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
   const coverUrl = usePlaylistCover(playlistToDisplay?.cover);
 
   return (
+
     <div className='mx-auto mt-32 flex w-[90%] flex-col items-center gap-10 shadow-2xl shadow-black  md:h-[650px] md:flex-row md:justify-around md:gap-0 2xl:h-[800px]'>
       <div className=' no-scrollbar h-[140px] space-y-2 overflow-y-scroll  text-center font-Druk md:h-[535px] md:space-y-10 md:text-start '>
         <h1 className='pb-4 text-3xl md:text-2xl'>
