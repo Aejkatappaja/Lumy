@@ -22,8 +22,8 @@ export default async function GetVideoById({ id }: { id: string }) {
   };
 
   return (
-    <div className='mt-32 flex h-full flex-col '>
-      <div className='h-[681px] px-20'>
+    <div className='mt-32 flex h-full flex-col'>
+      <div className='h-[15rem] px-2 md:h-[681px] md:px-20'>
         {' '}
         <div className='no-scrollbar relative flex h-full w-full items-center justify-center rounded-2xl border-2 border-white/20 bg-white/20 duration-500 hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 '>
           {data?.data[0]?.youtube_id && (
@@ -40,9 +40,9 @@ export default async function GetVideoById({ id }: { id: string }) {
           )}
         </div>
       </div>
-      <div className='mt-12 flex h-[457px] items-center justify-center'>
-        <section className='flex w-[768px] flex-col gap-[34px] '>
-          <h1 className='truncate text-5xl font-bold'>
+      <div className='flex items-center justify-center pt-6 md:mt-12 '>
+        <section className='flex w-full flex-col gap-[34px] px-2 md:w-fit '>
+          <h1 className='truncate text-3xl font-bold md:text-5xl'>
             {data?.data[0]?.title.toUpperCase()}
           </h1>{' '}
           <Text text='Il y a 3 jours' />
@@ -72,7 +72,7 @@ export default async function GetVideoById({ id }: { id: string }) {
           </div>
         </section>
       </div>
-      <div className='mt-12 w-screen px-10'>
+      <div className='mt-4 w-screen md:mt-12 md:px-10'>
         <Card
           text="d'autres vidéos"
           apiData={moreVideos}
