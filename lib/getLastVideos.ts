@@ -1,23 +1,5 @@
-interface IPlaylist {
-  playlist: number[];
-}
+import { ITotalVideos } from '@/types';
 
-export type IVideos = {
-  id: string;
-  status: string;
-  sort: null;
-  youtube_id: string;
-  title: string;
-  description: string;
-  cover: string;
-  duration: number;
-  view_count: number;
-  like_count: number;
-  date_published: string;
-  playlist: IPlaylist;
-};
-
-export type ITotalVideos = { data: IVideos[] };
 export async function getLastVideos(): Promise<ITotalVideos | undefined> {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 

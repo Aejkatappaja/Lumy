@@ -2,20 +2,21 @@ import React from 'react';
 import { icons } from './icons';
 import Link from 'next/link';
 import { strings } from '@/utils/strings';
-import { Triskell } from '@/utils/triskell';
 
 export const CustomFooter: React.FC = () => {
   return (
     <footer className='relative flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 overflow-hidden'>
       <nav className='flex gap-[56px]'>
         {icons.map((item) => {
+          const { href, icon } = item;
           return (
             <Link
-              href={item.href}
+              key={href}
+              href={href}
               target='_blank'
-              className='duration-700  hover:scale-150'
+              className='duration-700 hover:scale-150'
             >
-              <img src={item.icon} alt='' />
+              <img src={icon} alt='' />
             </Link>
           );
         })}
