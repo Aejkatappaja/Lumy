@@ -22,7 +22,7 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
   const coverUrl = usePlaylistCover(playlistToDisplay?.cover);
 
   return (
-    <div className='mx-auto mt-32 flex w-[90%] items-center justify-around  shadow-2xl shadow-black'>
+    <div className='mx-auto mt-32 flex h-[650px] w-[90%] items-center justify-around shadow-2xl shadow-black 2xl:h-[800px]'>
       <div className=' no-scrollbar h-[535px] space-y-10 overflow-y-scroll font-Druk '>
         <h1 className='pb-4 text-2xl'>
           {strings.playlists.page.toUpperCase()}
@@ -75,7 +75,7 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
             <div className='mt-4'>
               <Link
                 href={`/playlists/${playlistToDisplay.id}`}
-                className='mt-2 rounded-xl bg-[#616162]/70 px-4 py-3 text-center font-bold text-white shadow-md shadow-black'
+                className='mt-2 rounded-xl bg-[#616162]/70 px-4 py-3 text-center font-bold text-white shadow-md shadow-black duration-500  hover:shadow-sm hover:shadow-pink-400'
               >
                 Voir la Playlist
               </Link>

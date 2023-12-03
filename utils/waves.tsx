@@ -2,11 +2,11 @@ export const Waves = () => {
   return (
     <svg
       width='1440'
-      height='534'
-      viewBox='0 0 1440 534'
+      height='444'
+      viewBox='0 0 1440 444'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className='absolute bottom-0 -z-10 fill-slate-50/10'
+      className='absolute left-0 -z-10  fill-slate-50/10'
     >
       <g clipPath='url(#clip0_301_5767)'>
         <path
