@@ -5,7 +5,7 @@ import { strings } from '@/utils/strings';
 
 export const CustomFooter: React.FC = () => {
   return (
-    <footer className='relative flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 overflow-hidden'>
+    <footer className='relative flex h-[428.69px] w-full flex-col items-center justify-center space-y-16 overflow-hidden px-10'>
       <nav className='flex gap-[56px]'>
         {icons.map((item) => {
           const { href, icon } = item;
@@ -36,13 +36,14 @@ export const CustomFooter: React.FC = () => {
           {strings.footer.website}
         </Link>
       </nav>
+
       <svg
         width='694'
         height='675'
         viewBox='0 0 694 675'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='absolute -z-10 h-[35rem] w-[39rem] fill-slate-50/10'
+        className='absolute -z-10 h-[25rem] w-full fill-slate-50/10 md:h-[35rem] md:w-[39rem]'
       >
         <path
           fillRule='evenodd'
