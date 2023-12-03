@@ -22,9 +22,8 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
   const coverUrl = usePlaylistCover(playlistToDisplay?.cover);
 
   return (
-
     <div className='mx-auto mt-32 flex w-[90%] flex-col items-center gap-10 shadow-2xl shadow-black  md:h-[650px] md:flex-row md:justify-around md:gap-0 2xl:h-[800px]'>
-      <div className=' no-scrollbar h-[140px] space-y-2 overflow-y-scroll  text-center font-Druk md:h-[535px] md:space-y-10 md:text-start '>
+      <div className=' no-scrollbar h-[170px] space-y-2 overflow-y-scroll text-center font-Druk md:h-[535px] md:space-y-10 md:text-start'>
         <h1 className='pb-4 text-3xl md:text-2xl'>
           {strings.playlists.page.toUpperCase()}
         </h1>
@@ -41,7 +40,7 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
           );
         })}
       </div>
-      <div className='playlist-section flex flex-col justify-between px-12 md:h-[535px] md:px-0 '>
+      <div className='playlist-section mt-8 flex flex-col justify-between px-12 md:mt-0 md:h-[535px] md:px-0 '>
         {playlistToDisplay ? (
           <>
             <div className='relative mb-2 flex h-[250px] rounded-lg md:h-72 md:w-[30rem]'>

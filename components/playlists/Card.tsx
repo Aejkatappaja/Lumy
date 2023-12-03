@@ -29,22 +29,17 @@ export default function Card({ item }: CardProps) {
       className='flex w-full flex-col-reverse items-center justify-between border-t border-gray-400 py-3 md:h-80 md:flex-row md:justify-normal'
     >
       <div className='relative h-40 w-full md:h-[90%] md:w-1/3'>
-        <Image
-          src={coverUrl}
-          fill
-          alt='picture'
-          className='rounded-xl border'
-        />
+        <Image src={coverUrl} fill alt='picture' className='rounded-xl' />
       </div>
-      <div className='h-[90%] flex-col px-2 md:max-w-[50%] md:space-y-3  md:px-8'>
-        <div className='flex justify-between'>
-          <h1 className='truncate font-Druk text-xl font-bold tracking-wide md:text-3xl'>
+      <div className='h-[90%] max-w-full flex-col space-y-2 md:max-w-[50%] md:space-y-3 md:px-8'>
+        <div className='flex justify-between '>
+          <h1 className='max-w-[60%] truncate font-Druk text-xl font-bold tracking-wide md:text-3xl'>
             {title}
           </h1>
           <div className=' md:hidden '>
             <Link
               href={`/video/${id}`}
-              className='rounded-xl bg-[#616162]/70 px-4 py-1 text-center font-semibold text-white shadow-md shadow-black active:translate-x-1'
+              className='rounded-xl bg-[#616162]/70 px-4 py-1 text-center text-sm font-semibold text-white shadow-md shadow-black active:translate-x-1'
             >
               Voir la vidéo &gt;
             </Link>
