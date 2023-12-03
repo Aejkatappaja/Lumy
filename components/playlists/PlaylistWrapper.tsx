@@ -75,7 +75,7 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
             <div className='mt-4'>
               <Link
                 href={`/playlists/${playlistToDisplay.id}`}
-                className='mt-2 rounded-xl bg-[#616162]/70 px-4 py-3 text-center font-bold text-white shadow-md shadow-black'
+                className='mt-2 rounded-xl bg-[#616162]/70 px-4 py-3 text-center font-bold text-white shadow-md shadow-black duration-500  hover:shadow-sm hover:shadow-pink-400'
               >
                 Voir la Playlist
               </Link>
