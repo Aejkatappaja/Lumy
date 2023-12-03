@@ -49,7 +49,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
         <h1 className='font-Druk text-4xl tracking-wide'>
           {text.toUpperCase()}
         </h1>
-        {threeLastVideos && (
+        {!threeLastVideos && (
           <Link
             href={allOurPlaylists ? '/playlists' : ''}
             className='rounded-xl bg-[#404040] px-4 py-2 duration-500 hover:scale-105 hover:shadow-sm hover:shadow-pink-400'
@@ -65,14 +65,17 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
       )} */}
       <div className='flex h-96 gap-8 overflow-x-scroll'>
         {apiData?.data?.slice(0, number).map((item) => {
-          const coverUrl = usePlaylistCover(item.cover);
-          const id = item.youtube_id.toString();
+          const coverUrl = usePlaylistCover(item?.cover);
+          const id = item?.youtube_id?.toString();
+          const views = formatNumber(item?.view_count);
+          const time = timeSincePublishedVideo(item?.date_published);
+
           // const url = `https://www.youtube.com/watch?v=${id}`;
           return (
             <Link
               className='relative flex flex-col gap-2 '
               key={id}
-              href={allOurPlaylists ? `/video/${item.id}` : `/playlists`}
+              href={allOurPlaylists ? `/playlists` : `/video/${item.id}`}
             >
               <div
                 className={
@@ -86,7 +89,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                 }
               >
                 {mostViewedVideos && (
-                  <div className='-z-30 flex h-24 w-full border-white '></div>
+                  <div className='-z-30 flex h-24 w-full  border-white'></div>
                 )}
                 {allOurPlaylists && (
                   <div className='-z-30 flex h-24 w-full border-white '></div>
@@ -129,7 +132,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                       <div className='myclass absolute -top-[4rem] -z-10 flex h-24 w-full items-start justify-start  bg-gradient-to-b from-black from-15% to-[#9e2170] to-80% pl-2 font-Druk text-5xl tracking-widest text-black text-opacity-90'>
                         {formatNumber(item.view_count)}K
                       </div>
-                    )}{' '}
+                    )}
                     {allOurPlaylists && (
                       <>
                         <div className='absolute bottom-8 right-6 -z-20 h-60 w-[27rem] rounded-2xl  bg-[#4c4c4d]/40'></div>
@@ -143,7 +146,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                 <h1 className='pl-2 font-bold'>{item.title}</h1>{' '}
                 {item.date_published && (
                   <h1 className='oldGrey pl-2 text-sm tracking-wide'>
-                    Il y a {timeSincePublishedVideo(item.date_published)} jours
+                    Il y a {time} jours
                   </h1>
                 )}
                 {allOurPlaylists &&
