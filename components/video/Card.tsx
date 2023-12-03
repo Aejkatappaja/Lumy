@@ -18,65 +18,38 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
-  let shadowWaves: boolean;
-  let breadcrumbs: boolean;
-  let pinkStuff: boolean;
+  let number: number;
+  const threeLastVideos = variant === 'threeLastVideos';
+  const mostViewedVideos = variant === 'mostViewed';
+  const lastReplays = variant === 'lastReplays';
   const allOurPlaylists = variant === 'playlists';
-  let number;
-  switch (variant) {
-    case 'match':
-      breadcrumbs = true;
-      shadowWaves = false;
-      pinkStuff = false;
-      break;
-    case 'lastReplays':
-      breadcrumbs = false;
-      shadowWaves = true;
-      pinkStuff = false;
-      break;
-    case 'playlists':
-      breadcrumbs = false;
-      shadowWaves = false;
-      pinkStuff = false;
-      break;
-    case 'mostViewed':
-      breadcrumbs = false;
-      shadowWaves = false;
-      pinkStuff = true;
-      break;
-    case 'threeLastvideos':
-      breadcrumbs = false;
-      shadowWaves = false;
-      pinkStuff = false;
-      number = 3;
-      break;
-    default:
-      breadcrumbs = false;
-      shadowWaves = false;
-      number = 5;
-      break;
-  }
 
-  const [hoverStates, setHoverStates] = React.useState<{
-    [key: string]: boolean;
-  }>({});
+  if (threeLastVideos) {
+    number = 3;
+  } else if (mostViewedVideos) {
+    number = 8;
+  } else number = 100;
 
-  const handleMouseEnter = (id: string) => {
-    setHoverStates((prevStates) => ({ ...prevStates, [id]: true }));
-  };
+  // const [hoverStates, setHoverStates] = React.useState<{
+  //   [key: string]: boolean;
+  // }>({});
 
-  const handleMouseLeave = (id: string) => {
-    setHoverStates((prevStates) => ({ ...prevStates, [id]: false }));
-  };
+  // const handleMouseEnter = (id: string) => {
+  //   setHoverStates((prevStates) => ({ ...prevStates, [id]: true }));
+  // };
+
+  // const handleMouseLeave = (id: string) => {
+  //   setHoverStates((prevStates) => ({ ...prevStates, [id]: false }));
+  // };
 
   return (
     <div className='z-10 flex w-full flex-col space-y-6'>
-      {shadowWaves && <Waves />}
+      {lastReplays && <Waves />}
       <div className='flex justify-between pr-12 font-bold'>
         <h1 className='font-Druk text-4xl tracking-wide'>
           {text.toUpperCase()}
         </h1>
-        {variant !== 'threeLastVideos' && (
+        {threeLastVideos && (
           <Link
             href={allOurPlaylists ? '/playlists' : ''}
             className='rounded-xl bg-[#404040] px-4 py-2 duration-500 hover:scale-105 hover:shadow-sm hover:shadow-pink-400'
@@ -85,11 +58,11 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
           </Link>
         )}
       </div>
-      {breadcrumbs && (
+      {/* {breadcrumbs && (
         <div className='flex'>
           <span className='rounded-3xl bg-[#404040] px-4 py-2'>2013-15-12</span>
         </div>
-      )}
+      )} */}
       <div className='flex h-96 gap-8 overflow-x-scroll'>
         {apiData?.data?.slice(0, number).map((item) => {
           const coverUrl = usePlaylistCover(item.cover);
@@ -99,22 +72,20 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
             <Link
               className='relative flex flex-col gap-2 '
               key={id}
-              href={
-                variant !== 'playlists' ? `/video/${item.id}` : `/playlists`
-              }
+              href={allOurPlaylists ? `/video/${item.id}` : `/playlists`}
             >
               <div
                 className={
-                  pinkStuff
+                  mostViewedVideos
                     ? 'flex h-[80%] w-[24rem] flex-col'
-                    : variant === 'lastReplays'
+                    : lastReplays
                       ? 'flex h-[60%] w-[20rem]'
                       : allOurPlaylists
                         ? 'flex h-[100%] w-[30rem] flex-col'
                         : 'flex h-[80%] w-[34rem]'
                 }
               >
-                {pinkStuff && (
+                {mostViewedVideos && (
                   <div className='-z-30 flex h-24 w-full border-white '></div>
                 )}
                 {allOurPlaylists && (
@@ -123,10 +94,11 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                 {item?.youtube_id && (
                   <div
                     className={`'no-scrollbar z-60 hover:z-100 relative flex h-full w-full rounded-2xl border-2 border-white/20 bg-gray-600 duration-500 ${
-                      !(pinkStuff || allOurPlaylists) && 'hover:translate-x-2'
+                      !(mostViewedVideos || allOurPlaylists) &&
+                      'hover:translate-x-2'
                     } hover:border-pink-400 hover:shadow-md hover:shadow-pink-400 `}
-                    onMouseEnter={() => handleMouseEnter(id)}
-                    onMouseLeave={() => handleMouseLeave(id)}
+                    // onMouseEnter={() => handleMouseEnter(id)}
+                    // onMouseLeave={() => handleMouseLeave(id)}
                   >
                     {/* <ReactPlayer
                         url={url}
@@ -153,7 +125,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                       className=' rounded-2xl'
                       loading='lazy'
                     ></Image>
-                    {pinkStuff && (
+                    {mostViewedVideos && (
                       <div className='myclass absolute -top-[4rem] -z-10 flex h-24 w-full items-start justify-start  bg-gradient-to-b from-black from-15% to-[#9e2170] to-80% pl-2 font-Druk text-5xl tracking-widest text-black text-opacity-90'>
                         {formatNumber(item.view_count)}K
                       </div>
@@ -174,7 +146,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                     Il y a {timeSincePublishedVideo(item.date_published)} jours
                   </h1>
                 )}
-                {variant === 'playlists' &&
+                {allOurPlaylists &&
                 'video' in item &&
                 Array.isArray(item.video) ? (
                   <h2 className='oldGrey pl-2 text-sm tracking-wide'>
