@@ -21,11 +21,11 @@ export const PlaylistByIdWrapper: React.FC<PlaylistByIdWrapperProps> = ({
   const coverUrl = usePlaylistCover(data?.data[0]?.cover);
 
   return (
-    <div className='mx-auto mt-32 flex w-[90%] flex-col px-8'>
+    <div className='mx-auto mt-32 flex w-[90%] flex-col md:px-8'>
       <div>
         <GoBackButton />
       </div>
-      <div className='mt-10 flex '>
+      <div className='mt-10 flex flex-col md:flex-row '>
         <div className='flex flex-col gap-6 '>
           <div className='flex items-center space-x-6'>
             <h1 className='font-Druk text-3xl font-bold'>
@@ -46,7 +46,7 @@ export const PlaylistByIdWrapper: React.FC<PlaylistByIdWrapperProps> = ({
             />
           </div>
         </div>
-        <div className='relative mb-2 flex h-72 w-[63rem] rounded-lg'>
+        <div className='relative mb-2 mt-6 flex h-72 rounded-lg md:mt-0 md:w-[63rem]'>
           <Image
             src={coverUrl}
             fill

@@ -7,7 +7,7 @@ import GetThreeLastVideos from '@/components/ThreeLastVideos';
 
 export default function Home() {
   return (
-    <main className='mt-10 flex min-h-screen flex-col items-center gap-14 pl-12 pt-20'>
+    <main className='mt-10 flex min-h-screen flex-col items-center gap-14 pt-20 md:pl-12'>
       <BlurBackground />
 
       <GetThreeLastVideos />

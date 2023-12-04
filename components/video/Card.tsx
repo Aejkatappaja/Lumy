@@ -44,8 +44,8 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
 
   return (
     <div className='z-10 flex w-full flex-col space-y-6'>
-      {lastReplays && <Waves />}
-      <div className='flex justify-between pr-12 font-bold'>
+      <div className='hidden md:block'>{lastReplays && <Waves />}</div>
+      <div className='flex justify-between px-2 font-bold md:px-0 md:pr-12'>
         <h1 className='font-Druk text-4xl tracking-wide'>
           {text.toUpperCase()}
         </h1>
@@ -63,7 +63,7 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
           <span className='rounded-3xl bg-[#404040] px-4 py-2'>2013-15-12</span>
         </div>
       )} */}
-      <div className='flex h-96 gap-8 overflow-x-scroll'>
+      <div className='flex h-96 gap-8 overflow-x-scroll px-4 md:px-0'>
         {apiData?.data?.slice(0, number).map((item) => {
           const coverUrl = usePlaylistCover(item?.cover);
           const id = item?.youtube_id?.toString();
@@ -84,8 +84,8 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                     : lastReplays
                       ? 'flex h-[60%] w-[20rem]'
                       : allOurPlaylists
-                        ? 'flex h-[100%] w-[30rem] flex-col'
-                        : 'flex h-[80%] w-[34rem]'
+                        ? 'flex h-[100%] w-[25rem] flex-col md:w-[30rem]'
+                        : 'flex h-[80%] w-[25rem] md:w-[34rem]'
                 }
               >
                 {mostViewedVideos && (
@@ -135,8 +135,8 @@ export const Card: React.FC<CardProps> = ({ apiData, text, variant }) => {
                     )}
                     {allOurPlaylists && (
                       <>
-                        <div className='absolute bottom-8 right-6 -z-20 h-60 w-[27rem] rounded-2xl  bg-[#4c4c4d]/40'></div>
-                        <div className='absolute bottom-3 right-2 -z-10 mx-auto mb-2 h-60 w-[29rem] rounded-2xl  bg-[#4c4c4d]'></div>{' '}
+                        <div className='absolute bottom-8 right-6 -z-20 h-60 w-[22rem] rounded-2xl bg-[#4c4c4d]/40 md:w-[27rem]'></div>
+                        <div className='absolute bottom-3 right-2 -z-10 mx-auto mb-2 h-60 w-[24rem] rounded-2xl bg-[#4c4c4d]  md:w-[29rem]'></div>{' '}
                       </>
                     )}
                   </div>

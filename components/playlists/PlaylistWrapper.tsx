@@ -22,16 +22,16 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
   const coverUrl = usePlaylistCover(playlistToDisplay?.cover);
 
   return (
-    <div className='mx-auto mt-32 flex h-[650px] w-[90%] items-center justify-around shadow-2xl shadow-black 2xl:h-[800px]'>
-      <div className=' no-scrollbar h-[535px] space-y-10 overflow-y-scroll font-Druk '>
-        <h1 className='pb-4 text-2xl'>
+    <div className='mx-auto mt-32 flex w-[90%] flex-col items-center gap-10 shadow-2xl shadow-black  md:h-[650px] md:flex-row md:justify-around md:gap-0 2xl:h-[800px]'>
+      <div className=' no-scrollbar h-[170px] space-y-2 overflow-y-scroll text-center font-Druk md:h-[535px] md:space-y-10 md:text-start'>
+        <h1 className='pb-4 text-3xl md:text-2xl'>
           {strings.playlists.page.toUpperCase()}
         </h1>
         {data?.data?.map((item) => {
           const { id, title } = item;
           return (
             <h2
-              className=' oldGrey z-20 cursor-pointer text-4xl tracking-wide duration-700 hover:scale-75 hover:text-white'
+              className='oldGrey z-20 cursor-pointer text-2xl tracking-wide duration-700 hover:scale-75 hover:text-white md:text-4xl'
               key={id}
               onMouseEnter={() => setSelectedPlaylist(item.id)}
             >
@@ -40,18 +40,18 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
           );
         })}
       </div>
-      <div className='playlist-section flex h-[535px] flex-col justify-between '>
+      <div className='playlist-section mt-8 flex flex-col justify-between px-12 md:mt-0 md:h-[535px] md:px-0 '>
         {playlistToDisplay ? (
           <>
-            <div className='relative mb-2 flex h-72 w-[30rem] rounded-lg'>
+            <div className='relative mb-2 flex h-[250px] rounded-lg md:h-72 md:w-[30rem]'>
               <Image
                 src={coverUrl}
                 fill
                 alt='playlist-cover'
                 className='rounded-2xl border-2 border-pink-500'
               />{' '}
-              <div className='absolute bottom-8 right-8 -z-20 h-72 w-[26rem] rounded-2xl  bg-[#4c4c4d]/40'></div>
-              <div className='absolute bottom-2 right-4 -z-10 mx-auto mb-2 h-72 w-[28rem] rounded-2xl  bg-[#4c4c4d]'></div>{' '}
+              <div className='absolute bottom-[7.2rem] right-6 -z-20 h-40 w-[22rem] rounded-2xl bg-[#4c4c4d]/40 md:bottom-8 md:right-8 md:h-72  md:w-[26rem]'></div>
+              <div className='absolute bottom-[6rem] right-2 -z-10 mx-auto mb-2 h-40 w-[24rem] rounded-2xl bg-[#4c4c4d] md:bottom-2 md:right-4 md:h-72  md:w-[28rem]'></div>{' '}
             </div>{' '}
             <h1 className='font-Druk text-3xl font-bold'>
               {playlistToDisplay?.title.toUpperCase()}
@@ -82,8 +82,8 @@ export const PlaylistWrapper: React.FC<PlaylistWrapperProps> = ({ data }) => {
             </div>
           </>
         ) : (
-          <div className='flex h-full items-center  text-center'>
-            <h1 className='font-Druk text-4xl tracking-widest text-pink-400'>
+          <div className='borde mt-12 flex h-full items-center text-center  md:mt-0'>
+            <h1 className='font-Druk tracking-widest text-pink-400 md:text-4xl'>
               {strings.playlists.waitingForHover.toUpperCase()}
             </h1>
           </div>
